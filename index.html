@@ -23,8 +23,9 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div class="container">
+    <div class="imageContainer">
       <div class="secContainer">
+        <!-- Search bar section -->
         <div class="card1">
           <form class="searchbar">
             <input
@@ -36,37 +37,128 @@
           </form>
           <div class="degre">
             <div class="values">
-            <h1 class="temp">32°C</h1>
-             <img class="weatherImgg" src="images/rain.png" alt="" />
+              <h1 class="temp">32°C</h1>
+              <img class="weatherImgg" src="images/rain.png" alt="" />
             </div>
-            <h4 class="city">Asansol</h4>
+            <h4 class="city">delhi</h4>
+            <p id="time"></p>
             <div class="maxmin">
               <p class="max">max temp</p>
               <p class="min">min temp</p>
             </div>
           </div>
         </div>
+        <!-- humidity section start -->
         <div class="card">
-         
           <div class="details">
             <div class="box">
-              <img src="images/humidity.png" alt="" />
+              <img src="images/humidity.png" />
               <div class="text left">
-                <p class="humidity">40%</p>
+                <p class="humidity" id="humidt">40%</p>
                 <p>humudity</p>
               </div>
             </div>
             <div class="box">
               <img src="images/wind.png" alt="" />
               <div class="text">
-                <p class="speed">7km/h</p>
+                <p class="speed" id="speed">7km/h</p>
                 <p>speed</p>
               </div>
             </div>
           </div>
+          <hr />
+          <div class="details">
+            <div class="box">
+              <!-- <img src="images/temp.png"/> -->
+              <div class="text left">
+                <p class="humidity" id="feels">40%</p>
+                <p>Feels like</p>
+              </div>
+            </div>
+            <div class="box">
+              <img src="images/wind.png" alt="" />
+              <div class="text">
+                <p class="speed" id="type">Clear</p>
+                <p>type</p>
+              </div>
+            </div>
+          </div>
+          <hr />
+          <div class="details">
+            <div class="box">
+              <!-- <img src="images/humidity.png" /> -->
+              <div class="text left" id="sunrise">
+
+              </div> 
+            </div>
+            <div class="box" id="sunset">
+              <!-- <img src="images/wind.png" alt="" /> -->
+              
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- humidity section End-->
+
+      <!-- forcaste section -->
+      <div class="forcaste">
+        <div class="day" id="one">
+          <div>
+            <img src="images/clouds.png" alt="" />
+            <h2>Mon</h2>
+          </div>
+          <h1>30°c</h1>
+        </div>
+        <div class="day" id="two">
+          <div>
+            <img src="images/clouds.png" alt="" />
+            <h2>tue</h2>
+          </div>
+          <h1>30°c</h1>
+        </div>
+        <div class="day" id="three">
+          <div>
+            <img src="images/clouds.png" alt="" />
+            <h2>wed</h2>
+          </div>
+          <h1>30°c</h1>
+        </div>
+        <div class="day" id="four">
+          <div>
+            <img src="images/clouds.png" alt="" />
+            <h2>Thu</h2>
+          </div>
+          <h1>30°c</h1>
+        </div>
+        <div class="day" id="five">
+          <div>
+            <img src="images/clouds.png" alt="" />
+            <h2>Fri</h2>
+          </div>
+          <h1>30°c</h1>
+        </div>
+        <div class="day" id="six">
+          <div>
+            <img src="images/clouds.png" alt="" />
+            <h2>Sat</h2>
+          </div>
+          <h1>30°c</h1>
+        </div>
+        <div class="day" id="seven">
+          <div>
+            <img src="images/clouds.png" alt="" />
+            <h2>Sun</h2>
+          </div>
+          <h1>30°c</h1>
         </div>
       </div>
     </div>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.30.1/moment-with-locales.min.js"
+      integrity="sha512-4F1cxYdMiAW98oomSLaygEwmCnIP38pb4Kx70yQYqRwLVCs3DbRumfBq82T08g/4LJ/smbFGFpmeFlQgoDccgg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
     <script src="index.js"></script>
   </body>
 </html>
