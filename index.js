@@ -2,18 +2,17 @@ const search = document.querySelector(".searchbar");
 const btn = document.querySelector("button");
 let city = document.querySelector(".city");
 const degree = document.querySelector(".temp");
-const Time = document.querySelector("#time");
+// const Time = document.querySelector("#time");
 const humidity = document.querySelector("#humidt");
 const speed = document.querySelector("#speed");
 const feels = document.querySelector("#feels");
 const Sunrise = document.querySelector("#sunrise");
 const Sunset = document.querySelector("#sunset");
 const type = document.querySelector("#type");
+const typeimg = document.querySelector(".WeatherType");
 const max = document.querySelector(".max");
 const min = document.querySelector(".min");
 const weatherImg = document.querySelector(".weatherImgg");
-const currDay=document.querySelector("#one");
-const Day1=document.querySelector("#two");
 const imgContainer=document.querySelector('.imageContainer');
 
 let cityN = "Asansol";
@@ -28,7 +27,7 @@ search.addEventListener("submit", (e) => {
   loadWeather();
   cityname.value = "";
 });
-function bgImageChanger(data){
+function bgImageChanger(data){ //for Background changer According to weather
     if (data.weather[0].main == "Clouds") {
       imgContainer.style.backgroundImage="url('newpic/cloudbg.jpg')";
     } else if (data.weather[0].main == "Clear") {
@@ -45,68 +44,41 @@ function bgImageChanger(data){
     }
 }
 
-function showIcons(data,data2){
+function showIcons(data,data2){ //for weather icons according to weather
   const currDate=new Date(data.dt*1000);
   const hours=currDate.getHours();
   console.log(hours);
-
-  if(hours>18){
-    if (data.weather[0].main == "Clouds") {
-      weatherImg.src = "images/cloudsN.png";
-    } else if (data.weather[0].main == "Clear") {
-      weatherImg.src = "images/clearN.png";
-    } else if (data.weather[0].main == "Thunderstorm") {
-      weatherImg.src = "images/thunderN.png";
-    } else if (data.weather[0].main == "Drizzle") {
-      weatherImg.src = "images/drizzle.png";
-    } else if (data.weather[0].main == "Rain") {
-      weatherImg.src = "images/rainN.png";
-    } else if (data.weather[0].main == "Snow") {
-      weatherImg.src = "images/snow.png";
-    } else if (data.weather[0].main == "Mist") {
-      weatherImg.src = "images/mistN.png";
-    } else if (data.weather[0].main == "Haze") {
-      weatherImg.src = "Images/haze.png";
-    }
-  }
-  else{
-  if (data.weather[0].main == "Clouds") {
-    weatherImg.src = "images/clouds.png";
-  } else if (data.weather[0].main == "Clear") {
-    weatherImg.src = "images/clear.png";
-  } else if (data.weather[0].main == "Thunderstorm") {
-    weatherImg.src = "images/thunder.png";
-  } else if (data.weather[0].main == "Drizzle") {
-    weatherImg.src = "images/drizzle.png";
-  } else if (data.weather[0].main == "Rain") {
-    weatherImg.src = "images/rain.png";
-  } else if (data.weather[0].main == "Snow") {
-    weatherImg.src = "images/snow.png";
-  } else if (data.weather[0].main == "Mist") {
-    weatherImg.src = "images/mist.png";
-  } else if (data.weather[0].main == "Haze") {
-    weatherImg.src = "Images/haze.png";
-  }
-}
+typeimg.src=`http://openweathermap.org/img/wn/${data2.list[0].weather[0].icon}.png`;
+weatherImg.src=`http://openweathermap.org/img/wn/${data2.list[0].weather[0].icon}.png`;
 }
 
- function fetchForcaste(data2){
-//  let nextdateCaste='';
-  data2.list.forEach((ele,indx) => {
-    if(indx<8){
-      if(indx!=0){
-        Day1.innerHTML=` <div>
-            <img src="images/clouds.png" alt="" />
-            <h2>tues</h2>
-          </div>
-          <h1>30°c</h1>`
-      }
-      else{
-        
-      }
-    }
-  });
- }
+ function fetchForcaste(data2){  //for forcaste weather for five days
+  document.querySelector('#one').innerHTML=`
+          <img src="http://openweathermap.org/img/wn/${data2.list[0].weather[0].icon}.png" alt="">
+          <h2>${new Date(data2.list[0].dt * 1000).toLocaleDateString('en-US', { weekday: 'short' })}</h2>
+          <h1>${Math.round(data2.list[0].main.temp)}°C</h1>` 
+
+          document.querySelector('#two').innerHTML=`
+          <img src="http://openweathermap.org/img/wn/${data2.list[8].weather[0].icon}.png" alt="">
+          <h2>${new Date(data2.list[8].dt * 1000).toLocaleDateString('en-US', { weekday: 'short' })}</h2>
+          <h1>${Math.round(data2.list[8].main.temp)}°C</h1>` 
+
+          document.querySelector('#three').innerHTML=`
+          <img src="http://openweathermap.org/img/wn/${data2.list[16].weather[0].icon}.png" alt="">
+          <h2>${new Date(data2.list[16].dt * 1000).toLocaleDateString('en-US', { weekday: 'short' })}</h2>
+          <h1>${Math.round(data2.list[16].main.temp)}°C</h1>`
+
+          document.querySelector('#four').innerHTML=`
+          <img src="http://openweathermap.org/img/wn/${data2.list[24].weather[0].icon}.png" alt="">
+          <h2>${new Date(data2.list[24].dt * 1000).toLocaleDateString('en-US', { weekday: 'short' })}</h2>
+          <h1>${Math.round(data2.list[24].main.temp)}°C</h1>`
+
+          document.querySelector('#five').innerHTML=`
+          <img src="http://openweathermap.org/img/wn/${data2.list[32].weather[0].icon}.png" alt="">
+          <h2>${new Date(data2.list[32].dt * 1000).toLocaleDateString('en-US', { weekday: 'short' })}</h2>
+          <h1>${Math.round(data2.list[32].main.temp)}°C</h1>`
+    
+  }
 
 const loadWeather = async () => {
   const apiKey = "5c28f6366e2d155fc3e9071213bbcd1d";
@@ -131,7 +103,8 @@ const loadWeather = async () => {
     const data2 = await res.json();
     console.log(data2);
    
-    bgImageChanger(data);
+    bgImageChanger(data); //Bgimage call
+
     let { sunset, sunrise } = data2.city;
     Sunrise.innerHTML = `<p class="humidity" id="sunrise">${window
       .moment(sunrise * 1000)
@@ -142,9 +115,9 @@ const loadWeather = async () => {
                   .moment(sunset * 1000)
                   .format("HH:mm a")}</p>
                 <p>Sunset</p>
-              </div>`         
-         showIcons(data,data2);
-         fetchForcaste(data2);
+              </div>`  
+         showIcons(data,data2); //icon call format('YYYY-MM-DD HH:mm a')
+         fetchForcaste(data2); //forcaste function call
   } catch (error) {
     console.log(error, " API getting not fetched properly");
   }
