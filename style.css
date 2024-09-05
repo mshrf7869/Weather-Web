@@ -1,12 +1,12 @@
 *{
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
     
 }
 body{
     margin: 0;
     padding: 0;
-    height: 100%;
     font-family: 'poppins',sans-serif;
     color: white;
 }
@@ -22,12 +22,6 @@ body{
     border-image: fill 0 linear-gradient(#0001,#000);
 }
 
-/* img{
-    position: absolute;
-    top: 0;
-     bottom: 0;
-    z-index: -1;
-} */
 
 .secContainer{
  display: flex;
@@ -36,15 +30,11 @@ body{
 }
 .card1{
     margin: 1rem;
-    /* padding: 1rem 0.5rem; */
     display: flex;
     flex-direction: column;
 }
 
 .card{
-    /* width:40%; */
-    /* max-width: 570px; */
-    /* height:80vh; */
     margin: 1rem;
     padding:  1.5rem ;
     text-align: center;
@@ -66,7 +56,7 @@ body{
     outline: none;
     border: none;
     padding:10px 25px; 
-    height: 2rem;
+    height: 3rem;
     border-radius: 40px;
     margin-right: 0.5rem;
     font-size: 1.5rem;
@@ -96,7 +86,7 @@ width: 1.2rem;
 }
 .values{
     display: flex;
-    gap: 0.5rem;
+    gap:2rem;
     
     /* margin-top: 3rem; */
 }
@@ -107,7 +97,7 @@ width: 1.2rem;
 }
 
 .degre img{
-   width: 4rem;
+   width: 5rem;
 }
 .degre h4{
     letter-spacing:0.2rem;
@@ -115,10 +105,10 @@ width: 1.2rem;
 }
 
 .maxmin{
-    margin-top: 0.5rem;
+    margin-top: 0.7rem;
  display: flex;
- justify-content: center;
- gap: 5rem;
+ justify-content:flex-start;
+ gap: 2rem;
 }
 
 .details{
@@ -156,21 +146,21 @@ hr{
 {
     display: flex;
 } 
-#two{
-    display: flex;
-}
+
  .forcaste{
    margin: 2rem 3rem; 
    display: flex;
-   flex-wrap: wrap;
-   gap: 0.8rem;
-   
+   flex-wrap:wrap;
+   gap: 1rem;
+   width: 100%;
+   overflow-y: scroll;
  }
  .day{
     border: 2px solid white;
     padding: 0.5rem 1rem;
     border-radius: 7px;
     backdrop-filter: blur(4px);
+    width: 17%;
  }
  .day :nth-child(1){
  display: flex;
@@ -186,17 +176,29 @@ hr{
     }
     .searchbar input{
         width: 100%;
-        font-size: 0.5;
+        font-size: 1rem;
+        font-weight: bold;
     }
+    .searchbar button{
+       display: none;
+        }
+      
     .box{
         display: flex;
-        flex-wrap: wrap;
+        flex-wrap:nowrap;
         justify-content: center;
     }
     .text{
         text-align: left;
     }
-    .imageContainer{
-        height:auto;
+    .forcaste {
+        margin: 1rem; 
+        /* overflow-x: auto;  */
+        flex-wrap: wrap;
     }
+    .day{
+        width: 28%;
+    }
+    
+  
 }
